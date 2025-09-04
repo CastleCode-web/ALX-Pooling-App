@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "@/lib/hooks/useToast";
+import { AuthProvider } from "@/lib/hooks/useAuth";
 import ErrorBoundary from "@/components/layout/error-boundary";
 
 const inter = Inter({
@@ -67,7 +68,9 @@ export default function RootLayout({
         className={`${inter.variable} antialiased min-h-screen bg-background font-sans`}
       >
         <ErrorBoundary>
-          <ToastProvider>{children}</ToastProvider>
+          <AuthProvider>
+            <ToastProvider>{children}</ToastProvider>
+          </AuthProvider>
         </ErrorBoundary>
       </body>
     </html>

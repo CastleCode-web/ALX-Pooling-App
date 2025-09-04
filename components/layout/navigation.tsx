@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,9 +10,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   BarChart3,
   Plus,
@@ -22,28 +22,29 @@ import {
   LogOut,
   User,
   Menu,
-  X
-} from "lucide-react"
+  X,
+  Globe,
+} from "lucide-react";
 
 export function NavigationMenu() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: Home },
     { name: "Polls", href: "/polls", icon: Vote },
     { name: "Create Poll", href: "/create-poll", icon: Plus },
     { name: "Analytics", href: "/analytics", icon: BarChart3 },
-  ]
+  ];
 
-  const isActive = (href: string) => pathname === href
+  const isActive = (href: string) => pathname === href;
 
   return (
     <nav className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/dashboard" className="flex items-center">
+          <Link href="/polls" className="flex items-center">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                 <Vote className="h-5 w-5 text-white" />
@@ -57,7 +58,7 @@ export function NavigationMenu() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => {
-              const Icon = item.icon
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.name}
@@ -71,7 +72,7 @@ export function NavigationMenu() {
                   <Icon className="h-4 w-4" />
                   <span>{item.name}</span>
                 </Link>
-              )
+              );
             })}
           </div>
 
@@ -79,7 +80,10 @@ export function NavigationMenu() {
           <div className="hidden md:flex items-center space-x-4">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Button
+                  variant="ghost"
+                  className="relative h-8 w-8 rounded-full"
+                >
                   <Avatar className="h-8 w-8">
                     <AvatarImage src="/avatars/01.png" alt="User" />
                     <AvatarFallback>JD</AvatarFallback>
@@ -106,6 +110,12 @@ export function NavigationMenu() {
                   <Link href="/settings" className="flex items-center">
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/welcome" className="flex items-center">
+                    <Globe className="mr-2 h-4 w-4" />
+                    <span>Marketing Page</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -138,7 +148,7 @@ export function NavigationMenu() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-gray-700">
               {navigation.map((item) => {
-                const Icon = item.icon
+                const Icon = item.icon;
                 return (
                   <Link
                     key={item.name}
@@ -153,7 +163,7 @@ export function NavigationMenu() {
                     <Icon className="h-5 w-5" />
                     <span>{item.name}</span>
                   </Link>
-                )
+                );
               })}
 
               {/* Mobile User Section */}
@@ -200,5 +210,5 @@ export function NavigationMenu() {
         )}
       </div>
     </nav>
-  )
+  );
 }

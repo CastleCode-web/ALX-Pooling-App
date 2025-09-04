@@ -1,13 +1,16 @@
 # ALX Polly - Modern Polling Platform
 
-A comprehensive, feature-rich polling platform built with Next.js 15, TypeScript, and shadcn/ui components. Create engaging polls, gather insights, and make data-driven decisions with our powerful polling system.
+A comprehensive, feature-rich polling platform built with Next.js 15, TypeScript, and shadcn/ui components. Features smart routing, authentication system, and a complete polling ecosystem for creating engaging polls, gathering insights, and making data-driven decisions.
 
 ## 🚀 Features
 
-### ✅ Authentication System
+### ✅ Smart Routing & Authentication
+- **Intelligent Root Routing** - Auto-redirects based on authentication status
+- **Authentication Context** - Complete state management with React Context
+- **Persistent Sessions** - Automatic login restoration with token management
+- **Protected Routes** - HOC-based route protection with permission system
 - **User Registration & Login** - Secure authentication with form validation
 - **Password Strength Indicators** - Real-time password validation
-- **Remember Me Functionality** - Persistent login sessions
 - **Responsive Auth Layouts** - Mobile-first authentication pages
 
 ### ✅ Poll Management
@@ -36,10 +39,14 @@ A comprehensive, feature-rich polling platform built with Next.js 15, TypeScript
 - **Export Data** - Download analytics reports
 
 ### ✅ Modern UI/UX
+- **Smart User Experience** - Context-aware routing and navigation
+- **Marketing Landing Page** - Professional `/welcome` page for feature showcase
 - **Responsive Design** - Mobile-first responsive layouts
 - **Dark Mode Support** - System/manual theme switching
 - **Accessibility** - WCAG compliant components
-- **Loading States** - Skeleton loaders and transitions
+- **Loading States** - Skeleton loaders and smooth transitions
+- **Toast Notifications** - Custom notification system
+- **Error Boundaries** - Comprehensive error handling with recovery options
 
 ## 🛠 Tech Stack
 
@@ -68,6 +75,7 @@ alx-polly/
 │   │   ├── analytics/            # Analytics dashboard
 │   │   ├── settings/             # User settings
 │   │   └── layout.tsx            # Dashboard layout
+│   ├── welcome/                  # Marketing landing page
 │   ├── api/                      # API routes
 │   │   ├── auth/                 # Authentication endpoints
 │   │   └── polls/                # Poll CRUD endpoints
@@ -82,8 +90,11 @@ alx-polly/
 ├── lib/                          # Utilities and configurations
 │   ├── types/                    # TypeScript type definitions
 │   ├── hooks/                    # Custom React hooks
+│   │   ├── useAuth.tsx           # Authentication context & hooks
+│   │   ├── useToast.tsx          # Toast notification system
+│   │   └── useForm.ts            # Form management utilities
 │   ├── api.ts                    # API client utilities
-│   └── utils.ts                  # General utilities
+│   └── utils.ts                  # General utilities (40+ functions)
 ├── public/                       # Static assets
 ├── components.json               # shadcn/ui configuration
 ├── next.config.ts               # Next.js configuration
@@ -141,6 +152,11 @@ alx-polly/
 
 5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
+   
+   **Note**: The root page will automatically redirect you to:
+   - `/polls` - If not authenticated (browse public polls)
+   - `/dashboard` - If authenticated (your personal dashboard)
+   - Visit `/welcome` to see the marketing page
 
 ## 🔧 Development Commands
 
@@ -166,10 +182,14 @@ npm run lint
 
 ## 📱 Key Pages
 
-### Public Pages
-- **Landing Page** (`/`) - Marketing page with features overview
-- **Login** (`/login`) - User authentication
-- **Register** (`/register`) - User registration
+### Smart Routing System
+- **Root Page** (`/`) - Intelligent redirect based on authentication status
+  - Authenticated users → `/dashboard`  
+  - Guest users → `/polls` (public browsing)
+- **Marketing Page** (`/welcome`) - Professional landing page with features overview
+- **Authentication Pages**
+  - **Login** (`/login`) - User authentication with context integration
+  - **Register** (`/register`) - User registration with automatic login
 
 ### Protected Pages
 - **Dashboard** (`/dashboard`) - User overview with stats
@@ -219,8 +239,28 @@ Built with shadcn/ui components including:
 - **Sharing** - Social sharing capabilities
 - **Moderation** - Report and flag content
 
+## 🎯 Current User Flow
+
+### New User Experience
+1. **Visit** `/` → **Auto-redirect** to `/polls` (browse without account)
+2. **Discover** content → **Click** "Get Started" → `/register`
+3. **Register** → **Auto-login** → **Redirect** to `/dashboard`
+4. **Explore** features via marketing page at `/welcome`
+
+### Returning User Experience
+1. **Visit** `/` → **Auto-redirect** to `/dashboard` (if authenticated)
+2. **Access** all protected features immediately
+3. **Persistent session** across browser refreshes
+
+### Authentication Flow
+- **Smart Authentication** - Context-based state management
+- **Token Management** - Access/refresh token handling
+- **Route Protection** - Automatic redirection for protected pages
+- **Session Persistence** - Login state restored automatically
+
 ## 🎯 Upcoming Features
 
+- [ ] **Database Integration** - PostgreSQL/MongoDB connection
 - [ ] **Real-time Updates** - WebSocket integration for live voting
 - [ ] **File Uploads** - Image support for polls and profiles
 - [ ] **Email Notifications** - Poll activity notifications
@@ -230,13 +270,16 @@ Built with shadcn/ui components including:
 - [ ] **Internationalization** - Multi-language support
 - [ ] **Advanced Moderation** - Content filtering and user management
 
-## 🛡️ Security
+## 🛡️ Security & Authentication
 
+- **Context-Based Auth** - Secure authentication state management
+- **Token Management** - JWT access and refresh tokens
+- **Protected Routes** - HOC-based route protection
 - **Input Validation** - Client and server-side validation
 - **XSS Protection** - Content sanitization
 - **CSRF Protection** - Request validation
 - **Rate Limiting** - API endpoint protection
-- **Authentication** - Secure session management
+- **Session Persistence** - Secure local storage handling
 
 ## 🚀 Deployment
 
