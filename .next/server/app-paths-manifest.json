@@ -1,7 +1,10 @@
 {
-  "/(dashboard)/create-poll/page": "app/(dashboard)/create-poll/page.js",
-  "/(dashboard)/polls/page": "app/(dashboard)/polls/page.js",
   "/_not-found/page": "app/_not-found/page.js",
+  "/auth/login/page": "app/auth/login/page.js",
+  "/dashboard/create-poll/page": "app/dashboard/create-poll/page.js",
+  "/dashboard/dashboard/page": "app/dashboard/dashboard/page.js",
+  "/dashboard/polls/page": "app/dashboard/polls/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/welcome/page": "app/welcome/page.js"
 }

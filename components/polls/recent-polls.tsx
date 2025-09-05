@@ -240,7 +240,7 @@ export function RecentPolls() {
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-lg font-semibold">Recent Polls</CardTitle>
         <Button asChild variant="outline" size="sm">
-          <Link href="/polls">View All</Link>
+          <Link href="/dashboard/polls">View All</Link>
         </Button>
       </CardHeader>
       <CardContent className="space-y-4">

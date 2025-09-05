@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "@/lib/hooks/useToast";
-import { AuthProvider } from "@/lib/hooks/useAuth";
+import { AuthProvider } from "@/lib/context/AuthContext";
 import ErrorBoundary from "@/components/layout/error-boundary";
 
 const inter = Inter({

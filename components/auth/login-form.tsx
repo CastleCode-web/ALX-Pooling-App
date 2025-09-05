@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import Link from "next/link"
 import { Eye, EyeOff, Mail, Lock } from "lucide-react"
+import { supabase } from "@/lib/supabase/client"
+import { useRouter } from "next/navigation"
 
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -15,16 +17,23 @@ export function LoginForm() {
     email: "",
     password: ""
   })
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
-    // TODO: Implement login logic
     try {
-      console.log("Login attempt:", formData)
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const { error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      })
+
+      if (error) {
+        throw error
+      }
+
+      router.push('/dashboard')
     } catch (error) {
       console.error("Login error:", error)
     } finally {

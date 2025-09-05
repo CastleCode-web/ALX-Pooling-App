@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import Link from "next/link"
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react"
+import { supabase } from "@/lib/supabase/client"
+import { useRouter } from "next/navigation"
 
 export function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -18,6 +20,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: ""
   })
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -30,11 +33,22 @@ export function RegisterForm() {
       return
     }
 
-    // TODO: Implement registration logic
     try {
-      console.log("Registration attempt:", formData)
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const { error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.name,
+          },
+        },
+      })
+
+      if (error) {
+        throw error
+      }
+
+      router.push('/dashboard')
     } catch (error) {
       console.error("Registration error:", error)
     } finally {

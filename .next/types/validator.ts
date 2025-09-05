@@ -47,58 +47,64 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 }
 
 
-// Validate ../../app/(auth)/login/page.tsx
+// Validate ../../app/auth/login/page.tsx
 {
-  const handler = {} as typeof import("../../app/(auth)/login/page.js")
-  handler satisfies AppPageConfig<"/login">
+  const handler = {} as typeof import("../../app/auth/login/page.js")
+  handler satisfies AppPageConfig<"/auth/login">
 }
 
-// Validate ../../app/(auth)/register/page.tsx
+// Validate ../../app/auth/register/page.tsx
 {
-  const handler = {} as typeof import("../../app/(auth)/register/page.js")
-  handler satisfies AppPageConfig<"/register">
+  const handler = {} as typeof import("../../app/auth/register/page.js")
+  handler satisfies AppPageConfig<"/auth/register">
 }
 
-// Validate ../../app/(dashboard)/analytics/page.tsx
+// Validate ../../app/dashboard/analytics/page.tsx
 {
-  const handler = {} as typeof import("../../app/(dashboard)/analytics/page.js")
-  handler satisfies AppPageConfig<"/analytics">
+  const handler = {} as typeof import("../../app/dashboard/analytics/page.js")
+  handler satisfies AppPageConfig<"/dashboard/analytics">
 }
 
-// Validate ../../app/(dashboard)/create-poll/page.tsx
+// Validate ../../app/dashboard/create-poll/page.tsx
 {
-  const handler = {} as typeof import("../../app/(dashboard)/create-poll/page.js")
-  handler satisfies AppPageConfig<"/create-poll">
+  const handler = {} as typeof import("../../app/dashboard/create-poll/page.js")
+  handler satisfies AppPageConfig<"/dashboard/create-poll">
 }
 
-// Validate ../../app/(dashboard)/dashboard/page.tsx
+// Validate ../../app/dashboard/dashboard/page.tsx
 {
-  const handler = {} as typeof import("../../app/(dashboard)/dashboard/page.js")
-  handler satisfies AppPageConfig<"/dashboard">
+  const handler = {} as typeof import("../../app/dashboard/dashboard/page.js")
+  handler satisfies AppPageConfig<"/dashboard/dashboard">
 }
 
-// Validate ../../app/(dashboard)/polls/[id]/page.tsx
+// Validate ../../app/dashboard/polls/[id]/page.tsx
 {
-  const handler = {} as typeof import("../../app/(dashboard)/polls/[id]/page.js")
-  handler satisfies AppPageConfig<"/polls/[id]">
+  const handler = {} as typeof import("../../app/dashboard/polls/[id]/page.js")
+  handler satisfies AppPageConfig<"/dashboard/polls/[id]">
 }
 
-// Validate ../../app/(dashboard)/polls/page.tsx
+// Validate ../../app/dashboard/polls/page.tsx
 {
-  const handler = {} as typeof import("../../app/(dashboard)/polls/page.js")
-  handler satisfies AppPageConfig<"/polls">
+  const handler = {} as typeof import("../../app/dashboard/polls/page.js")
+  handler satisfies AppPageConfig<"/dashboard/polls">
 }
 
-// Validate ../../app/(dashboard)/settings/page.tsx
+// Validate ../../app/dashboard/settings/page.tsx
 {
-  const handler = {} as typeof import("../../app/(dashboard)/settings/page.js")
-  handler satisfies AppPageConfig<"/settings">
+  const handler = {} as typeof import("../../app/dashboard/settings/page.js")
+  handler satisfies AppPageConfig<"/dashboard/settings">
 }
 
 // Validate ../../app/page.tsx
 {
   const handler = {} as typeof import("../../app/page.js")
   handler satisfies AppPageConfig<"/">
+}
+
+// Validate ../../app/welcome/page.tsx
+{
+  const handler = {} as typeof import("../../app/welcome/page.js")
+  handler satisfies AppPageConfig<"/welcome">
 }
 
 // Validate ../../app/api/auth/route.ts
@@ -117,16 +123,16 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 
 
 
-// Validate ../../app/(auth)/layout.tsx
+// Validate ../../app/auth/layout.tsx
 {
-  const handler = {} as typeof import("../../app/(auth)/layout.js")
-  handler satisfies LayoutConfig<"/">
+  const handler = {} as typeof import("../../app/auth/layout.js")
+  handler satisfies LayoutConfig<"/auth">
 }
 
-// Validate ../../app/(dashboard)/layout.tsx
+// Validate ../../app/dashboard/layout.tsx
 {
-  const handler = {} as typeof import("../../app/(dashboard)/layout.js")
-  handler satisfies LayoutConfig<"/">
+  const handler = {} as typeof import("../../app/dashboard/layout.js")
+  handler satisfies LayoutConfig<"/dashboard">
 }
 
 // Validate ../../app/layout.tsx
